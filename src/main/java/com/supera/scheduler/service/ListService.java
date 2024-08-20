@@ -7,6 +7,7 @@ import com.supera.scheduler.model.dto.TaskDTO;
 import com.supera.scheduler.repository.ListRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -14,6 +15,7 @@ public class ListService {
 
     private final ListRepository listRepository;
 
+    @Transactional
     public List createList(ListDTO listDTO) {
         List list = new List();
         list.setTitle(listDTO.getTitle());
@@ -28,10 +30,10 @@ public class ListService {
                 list.getTasks().add(task);
             }
         }
-
         return listRepository.save(list);
     }
 
+    @Transactional(readOnly = true)
     public java.util.List<List> getAllLists() {
         return listRepository.findAll();
     }
