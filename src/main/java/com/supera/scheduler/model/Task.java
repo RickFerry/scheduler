@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,13 +33,14 @@ public class Task {
 
     private boolean favorite;
 
+    @CreationTimestamp
+    private LocalDate createdAt;
+
     @ManyToOne
     @JoinColumn(name = "list_id")
     private com.supera.scheduler.model.List list;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<SubTask> subtasks;
-
-    // Getters and Setters
 }
 
