@@ -4,17 +4,17 @@ import com.supera.scheduler.model.Task;
 import com.supera.scheduler.model.dto.TaskDTO;
 import com.supera.scheduler.model.dto.TaskResponseDTO;
 import com.supera.scheduler.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class TaskService {
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     public Task createTask(TaskDTO taskDTO) {
         Task task = new Task();

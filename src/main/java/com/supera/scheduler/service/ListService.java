@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class ListService {
+
     private final ListRepository listRepository;
 
     public List createList(ListDTO listDTO) {

@@ -4,18 +4,18 @@ import com.supera.scheduler.model.Task;
 import com.supera.scheduler.model.dto.TaskDTO;
 import com.supera.scheduler.model.dto.TaskResponseDTO;
 import com.supera.scheduler.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) {
